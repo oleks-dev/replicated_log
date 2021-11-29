@@ -1,0 +1,46 @@
+plugins {
+    id 'io.franzbecker.gradle-lombok' version '3.3.0'
+    id 'com.bmuschko.docker-remote-api' version '6.4.0'
+    id 'net.nemerosa.versioning' version '2.14.0'
+    id 'java'
+}
+
+group 'org.example'
+version '1.0'
+
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //logging
+    implementation ('log4j:log4j:1.2.17')
+
+    //tools
+    compile("commons-cli:commons-cli:1.4")
+
+    //json
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.0")
+
+    //test
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.29'
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "org.example.SecondaryNode"
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+task buildImage(type: com.bmuschko.gradle.docker.tasks.image.DockerBuildImage) {
+    dependsOn jar
+    inputDir = projectDir
+    images.add("${project.name}:${project.version}".toLowerCase())
+}

@@ -1,0 +1,4 @@
+rootProject.name = 'replicated_log'
+include ':master_node'
+include ':secondary_node'
+
