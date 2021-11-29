@@ -53,7 +53,7 @@ public class MasterNode {
 				secondaries = new String[]{};
 			}
 
-			HttpServer server = HttpServer.create(new InetSocketAddress(master.getHost(), master.getPort()), 0);
+			HttpServer server = HttpServer.create(new InetSocketAddress(master.getPort()), 0);
 			server.createContext("/", new RootHandler(secondaries));
 			server.start();
 			log.info("Master node started at host:{} port:{}, secondaries: {}", master.getHost(), master.getPort(), secondaries);

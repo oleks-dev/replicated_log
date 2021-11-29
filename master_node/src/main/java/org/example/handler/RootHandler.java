@@ -44,10 +44,10 @@ public class RootHandler implements HttpHandler {
                     messages.putIfAbsent(count.getAndIncrement(), messageDto.getMessage());
                     log.info("Added msg: {}", messageDto);
                     service.notify(messageDto.getWriteConcern(), InternalMessageDto.of(count.get(), messageDto.getMessage()));
-                    exchange.sendResponseHeaders(Response.OK, 0);
+                    exchange.sendResponseHeaders(Response.OK, -1);
                 } else {
                     log.error("Could not deserialize msg");
-                    exchange.sendResponseHeaders(Response.ERROR, 0);
+                    exchange.sendResponseHeaders(Response.ERROR, -1);
                 }
                 exchange.getRequestBody().close();
             default:

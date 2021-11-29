@@ -20,7 +20,7 @@ services:
     networks:
       - localhost
     command:
-      -h localhost -p 8081 -d 10000
+      -h localhost -p 8081 -d 10
     volumes:
       - "secondary_node:/secondary_node"
 
@@ -29,7 +29,6 @@ volumes:
     driver: local
   secondary_node:
     driver: local
-
 
 networks:
   localhost:

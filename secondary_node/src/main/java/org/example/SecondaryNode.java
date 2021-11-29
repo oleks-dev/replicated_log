@@ -68,7 +68,7 @@ public class SecondaryNode {
 				delay = "0";
 			}
 
-			HttpServer server = HttpServer.create(new InetSocketAddress(host, Integer.parseInt(port)), 0);
+			HttpServer server = HttpServer.create(new InetSocketAddress(Integer.parseInt(port)), 0);
 			server.createContext("/", new RootHandler(Long.parseLong(delay)));
 			server.start();
 			log.info("Secondary node started with delay {} on host:{}, port {}", delay, host, port);

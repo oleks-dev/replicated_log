@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MessageDto {
-    @JsonProperty("w")
+    @JsonProperty("write_concern")
     private int writeConcern;
     private String message;
 }
