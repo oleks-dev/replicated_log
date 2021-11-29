@@ -3,7 +3,7 @@ package org.example.service;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.example.utils.UrlUtils;
-import org.example.dto.out.InternalMessageDto;
+import org.example.dto.InternalMessageDto;
 import org.example.utils.JsonUtils;
 
 import java.net.URI;

@@ -1,6 +1,5 @@
-package org.example.dto.in;
+package org.example.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Getter
@@ -8,8 +7,7 @@ import lombok.*;
 @EqualsAndHashCode
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class MessageDto {
-    @JsonProperty("write_concern")
-    private int writeConcern;
+public class InternalMessageDto {
+    private int id;
     private String message;
 }
